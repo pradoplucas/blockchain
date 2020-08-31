@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
+
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <meta name="description" content="" />
         <meta name="author" content="Lucas do Prado Pinto"/>
+
         <title>Blockchain</title>
 
         <!--Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
 
-        <!--Core theme CSS (includes Bootstrap)-->
+        <!--CSS-->
         <link href="styles/bootstrap.css" rel="stylesheet"/>
+
     </head>
 
     <body class="body">
@@ -23,14 +26,11 @@
                 <div class="col-sm-2 my-auto">
                     <button type="button" class="btn btn-ink" onclick="inclusao()">Inclusão</button>
                 </div>
-<!--
-                <div class="col-sm-2">
-                    <button type="button" class="btn btn-primary" onclick="alteracao()">Alteração</button>
-                </div>
--->
+
                 <div class="col-sm-2 my-auto">
                     <button type="button" class="btn btn-posy" onclick="verificar()">Verificar</button>
                 </div>
+
                 <div class="col-sm-2 my-auto">
                     <button type="button" class="btn btn-embers" onclick="limpar()">Limpar</button>
                 </div>
@@ -42,28 +42,17 @@
                 <!--Inclusão-->
                 <div id="page-inclusao" style="display: none;" class="col-sm-9 text-center py-5 text-white-75 ">
 
-                    <!--<span class="span-h2 text-light bg-grey-dark">-Inclusão-</span>-->
                     <h2 class="text-light">Inclusão</h2>
 
                     <div class="form-group pt-4">
 
-                        <!--<label class="bg-grey-dark">-Dificuldade-</label>-->
                         <label class="text-light">Dificuldade</label>
-
                         <input id="dificuldade" type="number" class="form-control mx-auto w-15" min="1" value="1">
-<!--                        
-                        <select id="dificuldade" class="form-control mx-auto w-25">
-                            <option>Selecione</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                        </select>
-                    -->
+
                     </div>
 
                     <div class="form-group">
 
-                        <!--<label class="bg-grey-dark">-Dados-</label>-->
                         <label class="text-light">Dados</label>
                         <input id="dados" type="text" class="form-control mx-auto w-50">
 
@@ -82,7 +71,6 @@
                 <!--Alteração-->
                 <div id="page-alteracao" style="display: none;" class="col-sm-9 text-center py-5 text-white-75">
 
-                    <!--<span class="span-h2 text-light bg-grey-dark">-Alteração-</span>-->
                     <h2 class="text-light">Alteração</h2>
 
                     <div class="form-group pt-4">
@@ -102,16 +90,8 @@
                     <div class="form-group">
 
                         <label>Dificuldade</label>
-
                         <input id="dificuldade-update" type="number" class="form-control mx-auto w-15" min="1" value="1">
-                        <!--
-                        <select id="dificuldade-update" class="form-control mx-auto w-25">
-                            <option>Selecione</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                        </select>
-                    -->
+
                     </div>
 
                     <div class="form-group">
@@ -120,14 +100,7 @@
                         <input id="dados-update" type="text" class="form-control mx-auto w-50">
 
                     </div>
-<!--
-                    <div class="form-group">
 
-                        <label>Nonce</label>
-                        <input id="nonce" type="number" class="form-control mx-auto w-25">
-
-                    </div>
--->
                     <div class="form-group pt-3">
 
                         <button type="button" class="btn btn-posy" onclick="alterar()">Alterar</button>
@@ -143,24 +116,25 @@
                     
                     <h2 class="text-light mb-3">Verificação</h2>
 
-                    <span id="integridade" style="word-wrap: break-word;"></span>
+                    <span id="info-integridade" style="word-wrap: break-word;"></span>
 
                 </div>
 
                 <!--Tabelas-->
-                <div id="page-tabelas" style="display: none;" class="col-sm-12 text-center py-3 bg-black">
+                <div id="page-blocos" style="display: none;" class="col-sm-12 text-center py-3 bg-black">
 
-                    <button id="expandir" style="display: none;" type="button" class="btn btn-stark text-dark mb-3" onclick="expandir()">Expandir</button>
+                    <button id="btn-expandir" style="display: none;" type="button" class="btn btn-stark text-dark mb-3" onclick="expandir()">Expandir</button>
 
-                    <div id="tabela-lateral"></div>
+                    <div id="table-lateral"></div>
 
                 </div>
 
             </div>
         </div>
 
-        <!-- Core theme JS-->
+        <!-- Scripts JS-->
         <script src="scripts/sha256.js"></script>
         <script src="scripts/script.js"></script>
+        
     </body>
 </html>
