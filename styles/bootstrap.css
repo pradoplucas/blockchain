@@ -8284,6 +8284,10 @@ button.bg-black:focus {
   font-size: 1.75rem;
 }
 
+.w-15 {
+  width: 15% !important;
+}
+
 .w-25 {
   width: 25% !important;
 }

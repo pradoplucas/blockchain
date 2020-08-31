@@ -11,7 +11,10 @@ info_update = document.getElementById("info-update");
 
 var blockchain = [];
 
+var count_dif = [1, 1, 1];
+
 function inclusao(){
+    att_table();
     page_tabelas.style = "";
     btn_expandir.style = "";
     page_tabelas.className = "col-sm-3 text-center py-3 bg-black";
@@ -23,21 +26,23 @@ function inclusao(){
     info.innerHTML = "";
     info.className = "";
 
-    document.getElementById("dificuldade").value = "Selecione";
+    document.getElementById("dificuldade").value = "1";
     document.getElementById("dados").value = "";
 }
 
 function incluir(){
     var block = [],
-        dificuldade = document.getElementById("dificuldade").value,
+        dificuldade = parseInt(document.getElementById("dificuldade").value),
         dados = document.getElementById("dados").value;
 
-    if(dificuldade == "Selecione" && dados == ""){
-        info.innerHTML = "-Selecione uma dificuldade e Insira algum dado-";
+    console.log(typeof(dificuldade));
+
+    if(dificuldade <= 0 && dados == ""){
+        info.innerHTML = "-Selecione uma dificuldade maior que zero e Insira algum dado-";
         info.className = "span-h6 text-light bg-danger";
     }
-    else if(dificuldade == "Selecione"){
-        info.innerHTML = "-Selecione uma dificuldade-";
+    else if(dificuldade <= 0){
+        info.innerHTML = "-Selecione uma dificuldade maior que zero-";
         info.className = "span-h6 text-light bg-danger";
     }
     else if(dados == ""){
@@ -61,7 +66,19 @@ function incluir(){
 
         var mining_values;
 
+        var time_before, time_after, time;
+        
+        time_before = new Date();
+
         mining_values = mining(dificuldade, dados);
+
+        time_after = new Date();
+
+        time = time_after.getTime() - time_before.getTime();
+
+        console.log(count_dif[dificuldade - 1] + ". Dif: " + dificuldade + " - T: " + time + "ms");
+
+        count_dif[dificuldade - 1]++;
 
         block.push(mining_values[0]);
     
@@ -71,7 +88,7 @@ function incluir(){
 
         blockchain.push(block);
     
-        console.log(blockchain);
+        //console.log(blockchain);
 
         info.innerHTML = "-Incluído com sucesso-";
         info.className = "span-h6 text-light bg-success";
@@ -85,6 +102,7 @@ function incluir(){
 }
 
 function alteracao(bloco){
+    att_table();
     page_tabelas.style = "";
     btn_expandir.style = "";
     page_tabelas.className = "col-sm-3 text-center py-3 bg-black";
@@ -135,7 +153,7 @@ function alteracao(bloco){
 function alterar(){
     var n_bloco = document.getElementById("n-bloco-update").value,
         dados_update = document.getElementById("dados-update").value;
-        dificuldade_update = document.getElementById("dificuldade-update").value;
+        dificuldade_update = parseInt(document.getElementById("dificuldade-update").value);
 
     if(dados_update == ""){
         info_update.innerHTML = "-Insira algum dado-";
@@ -160,6 +178,7 @@ function alterar(){
 }
 
 function verificar(){
+    att_table();
     page_inclusao.style = "display: none;";
     page_alteracao.style = "display: none;";
     page_verificacao.style = "";
@@ -211,6 +230,7 @@ function verificar(){
 }
 
 function limpar(){
+    att_table();
     page_tabelas.style = "display: none;";
     btn_expandir.style = "display: none;";
     page_tabelas.className = "col-sm-12 text-center py-3 bg-black";
@@ -227,9 +247,11 @@ function limpar(){
     for(block = 0; block < tam; block++){
         blockchain.pop();
     }
+    att_table();
 }
 
 function expandir(){
+    att_table();
     page_tabelas.style = "";
     btn_expandir.style = "display: none;";
     page_tabelas.className = "col-sm-12 text-center py-3 bg-black";
@@ -237,6 +259,7 @@ function expandir(){
     page_inclusao.style = "display: none;";
     page_alteracao.style = "display: none;";
     page_verificacao.style = "display: none;";
+    att_table();
 }
 
 function mining(dificuldade, dados){
