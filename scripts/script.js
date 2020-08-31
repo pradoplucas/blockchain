@@ -11,8 +11,6 @@ info_update = document.getElementById("info-update");
 
 var blockchain = [];
 
-var count_dif = [1, 1, 1];
-
 function inclusao(){
     att_table();
     page_tabelas.style = "";
@@ -35,7 +33,7 @@ function incluir(){
         dificuldade = parseInt(document.getElementById("dificuldade").value),
         dados = document.getElementById("dados").value;
 
-    console.log(typeof(dificuldade));
+    //console.log(typeof(dificuldade));
 
     if(dificuldade <= 0 && dados == ""){
         info.innerHTML = "-Selecione uma dificuldade maior que zero e Insira algum dado-";
@@ -76,9 +74,7 @@ function incluir(){
 
         time = time_after.getTime() - time_before.getTime();
 
-        console.log(count_dif[dificuldade - 1] + ". Dif: " + dificuldade + " - T: " + time + "ms");
-
-        count_dif[dificuldade - 1]++;
+        console.log("Dif: " + dificuldade + " - T: " + time + "ms");
 
         block.push(mining_values[0]);
     
@@ -195,7 +191,7 @@ function verificar(){
     if(blockchain.length == 0 || blockchain.length == 1){
         integridade.className = "span-h3 bg-success";
         integridade.innerHTML = "Integridade Confirmada";
-        console.log("Right_1")
+        //console.log("Right_1")
     }
     else{
         for(block = 0; block < blockchain.length - 1; block++){
@@ -213,7 +209,7 @@ function verificar(){
             integridade.className = "span-h3 bg-danger";
             integridade.innerHTML = "Integridade Violada no Bloco " + block + "<br>Todos os blocos após a violação foram exluídos";
             
-            console.log("Wrong_1")
+            //console.log("Wrong_1")
 
             att_table();
 
@@ -222,7 +218,7 @@ function verificar(){
         else{
             integridade.className = "span-h3 bg-success";
             integridade.innerHTML = "Integridade Confirmada";
-            console.log("Right_2")
+            //console.log("Right_2")
         }
     }
 
